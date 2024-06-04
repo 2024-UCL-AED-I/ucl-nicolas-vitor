@@ -21,5 +21,5 @@ Requisitos Técnicos
 
 clone o repositorio para sua máquina local.
 Abra o projeto em sua IDE preferida.
-compile e execute o programa
-Siga as instruções apresentadas no menu de interação para utilizar as funcionalidades do sistema
+compile e execute o programa.
+Siga as instruções apresentadas no menu de interação para utilizar as funcionalidades do sistema.
