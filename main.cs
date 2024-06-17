@@ -1,59 +1,6 @@
- class Cliente
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public List<Produto> Compras { get; set; }
-
-        public Cliente(int id,string nome, string email)
-        {
-            Id = id;
-            Nome = nome;
-            Email = email;
-            Compras = new List<Produto>();
-        }
-        public void AdicionarCompra(Produto produto)
-        {
-            Compras.Add(produto);
-        }
-        public void ExibirCompras()
-        {
-            Console.WriteLine($"Compras do Cliente {Nome}:");
-            foreach (var produto in Compras)
-            {
-                produto.ExibirDetalhes();
-            }
-        }
-    }
-
-}
-
-    class Produto
-    {
-        public int Id { get; set; }
-        public string Nome { get; set; }
-        public double Preco { get; set; }
-        public int Quantidade { get; set; }
-
-        public Produto(int id, string nome, double preco, int quantidade)
-        {
-            Id = id;
-            Nome = nome;
-            Preco = preco;
-            Quantidade = quantidade;
-        }
-
-        public void ExibirDetalhes()
-        {
-            Console.WriteLine($"ID: {Id},Nome:{Nome},Preço:{Preco},Quantidade:{Quantidade}");
-        }
-
-        public void AtualizarEstoque(int quantidade)
-        {
-            Quantidade += quantidade;
-        }
-    }
-}
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 class Program
 {
@@ -62,7 +9,7 @@ class Program
 
     static void Main(string[] args)
     {
-        //Menu
+        // Menu
         while (true)
         {
             Console.WriteLine("1. Adicionar Produto");
@@ -91,6 +38,7 @@ class Program
             }
         }
     }
+
     static void AdicionarProduto()
     {
         Console.WriteLine("ID:");
@@ -98,11 +46,11 @@ class Program
         Console.WriteLine("Nome:");
         string nome = Console.ReadLine();
         Console.WriteLine("Preço:");
-        double Preco = double.Parse(Console.ReadLine());
+        double preco = double.Parse(Console.ReadLine());
         Console.WriteLine("Quantidade:");
         int quantidade = int.Parse(Console.ReadLine());
 
-        Produto produto = new Produto(id, nome, Preco, quantidade);
+        Produto produto = new Produto(id, nome, preco, quantidade);
         produtos.Add(produto);
         SalvarProdutos();
     }
@@ -133,8 +81,22 @@ class Program
 
         if (cliente != null && produto != null)
         {
-            cliente.AdicionarCompra(produto);
-            SalvarClientes();
+            Console.WriteLine("Quantidade desejada:");
+            int quantidadeDesejada = int.Parse(Console.ReadLine());
+
+            if (produto.Quantidade >= quantidadeDesejada)
+            {
+                produto.AtualizarEstoque(-quantidadeDesejada);
+                Produto compra = new Produto(produto.Id, produto.Nome, produto.Preco, quantidadeDesejada);
+                cliente.AdicionarCompra(compra);
+                SalvarProdutos();
+                SalvarClientes();
+                Console.WriteLine("Compra registrada com sucesso.");
+            }
+            else
+            {
+                Console.WriteLine($"Estoque insuficiente. Apenas {produto.Quantidade} unidades disponíveis.");
+            }
         }
         else
         {
@@ -155,7 +117,6 @@ class Program
         {
             cliente.ExibirCompras();
         }
-
     }
 
     static void SalvarProdutos()
@@ -171,16 +132,72 @@ class Program
 
     static void SalvarClientes()
     {
-        using (StreamWriter write = new StreamWriter("clientes.txt"))
+        using (StreamWriter writer = new StreamWriter("clientes.txt"))
         {
-            foreach(var cliente in clientes)
+            foreach (var cliente in clientes)
             {
-                write.WriteLine($"{cliente.Id},{cliente.Nome},{cliente.Email}");
-                foreach(var compra in cliente.Compras)
+                writer.WriteLine($"{cliente.Id},{cliente.Nome},{cliente.Email}");
+                foreach (var compra in cliente.Compras)
                 {
-                    write.WriteLine($"{compra.Id},{compra.Nome},{compra.Preco},{compra.Quantidade}");
+                    writer.WriteLine($"{compra.Id},{compra.Nome},{compra.Preco},{compra.Quantidade}");
                 }
             }
+        }
+    }
+}
+
+class Produto
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public double Preco { get; set; }
+    public int Quantidade { get; set; }
+
+    public Produto(int id, string nome, double preco, int quantidade)
+    {
+        Id = id;
+        Nome = nome;
+        Preco = preco;
+        Quantidade = quantidade;
+    }
+
+    public void ExibirDetalhes()
+    {
+        Console.WriteLine($"ID: {Id}, Nome: {Nome}, Preço: {Preco}, Quantidade: {Quantidade}");
+    }
+
+    public void AtualizarEstoque(int quantidade)
+    {
+        Quantidade += quantidade;
+    }
+}
+
+class Cliente
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string Email { get; set; }
+    public List<Produto> Compras { get; set; }
+
+    public Cliente(int id, string nome, string email)
+    {
+        Id = id;
+        Nome = nome;
+        Email = email;
+        Compras = new List<Produto>();
+    }
+
+    public void AdicionarCompra(Produto produto)
+    {
+        Compras.Add(produto);
+    }
+
+    public void ExibirCompras()
+    {
+        Console.WriteLine($"Compras do Cliente {Nome}:");
+        foreach (var produto in Compras)
+        {
+            produto.ExibirDetalhes();
         }
     }
 }
