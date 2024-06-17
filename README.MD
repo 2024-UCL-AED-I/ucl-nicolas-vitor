@@ -23,3 +23,6 @@ clone o repositorio para sua máquina local.
 Abra o projeto em sua IDE preferida.
 compile e execute o programa.
 Siga as instruções apresentadas no menu de interação para utilizar as funcionalidades do sistema.
+
+28/05 - Debatido e criado a ideia do que seria feito por completo no sistema e inicio das atividades iniciais de programação do projeto
+17/06 - Código já finalizado com as ideias iniciais todas desenvolvidas e completas. 
