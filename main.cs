@@ -9,6 +9,24 @@ class Program
 
     static void Main(string[] args)
     {
+
+        Console.WriteLine("-------------------------------------------------------");
+        Console.WriteLine("        __  ___             ___        __    _     \r\n" +
+            "        )_) )_  )\\/)   ) )   )   )\\ )  ) )  / )  \r\n" +
+            "       /__)(__ (  (    \\/  _(_  (  (  /_/  (_/    \r\n");
+
+        Console.WriteLine("                         __ \r\n" +
+            "                        |__|\r\n" +
+            "                        |  |\r\n");
+
+        Console.WriteLine(@" (   (   (   (   (    (( (         (   (    (  (    )  
+ )\  )\  )\  )\  )\  (\())\        )\  )\   )\ )\  ()) 
+(_()((_)((_)(_()((_)))(_)(_)      ((_)((_) ((_)(_)(()))
+/   \ _ \ _ \   \ _ \ __| |       | _ \ |  | | | |/ __|
+| - |  _/  _/ - |   / _|| |__     |  _/ |__| |_| | (_ |
+|_|_|_| |_| |_|_|_|_\___|____|    |_| |____|\___/ \___|");
+
+        Console.WriteLine("--------------------------------------------------------");
         // Menu
         while (true)
         {
@@ -41,11 +59,11 @@ class Program
 
     static void AdicionarProduto()
     {
-        Console.WriteLine("ID:");
+        Console.WriteLine("ID do Produto:");
         int id = int.Parse(Console.ReadLine());
-        Console.WriteLine("Nome:");
+        Console.WriteLine("Nome do Produto:");
         string nome = Console.ReadLine();
-        Console.WriteLine("Preço:");
+        Console.WriteLine("Preço do Produto:");
         double preco = double.Parse(Console.ReadLine());
         Console.WriteLine("Quantidade:");
         int quantidade = int.Parse(Console.ReadLine());
@@ -57,9 +75,9 @@ class Program
 
     static void AdicionarCliente()
     {
-        Console.WriteLine("ID: ");
+        Console.WriteLine("ID do Cliente: ");
         int id = int.Parse(Console.ReadLine());
-        Console.WriteLine("Nome: ");
+        Console.WriteLine("Nome do Cliente: ");
         string nome = Console.ReadLine();
         Console.WriteLine("Email:");
         string email = Console.ReadLine();
@@ -106,13 +124,13 @@ class Program
 
     static void ExibirRelatorios()
     {
-        Console.WriteLine("Produtos:");
+        Console.WriteLine("\nProdutos: \n");
         foreach (var produto in produtos)
         {
             produto.ExibirDetalhes();
         }
 
-        Console.WriteLine("Clientes e suas Compras:");
+        Console.WriteLine("\nClientes e suas Compras: \n");
         foreach (var cliente in clientes)
         {
             cliente.ExibirCompras();
@@ -163,7 +181,7 @@ class Produto
 
     public void ExibirDetalhes()
     {
-        Console.WriteLine($"ID: {Id}, Nome: {Nome}, Preço: {Preco}, Quantidade: {Quantidade}");
+        Console.WriteLine($"ID: {Id}, Nome: {Nome}, Preço: {Preco}, Quantidade: {Quantidade}\n");
     }
 
     public void AtualizarEstoque(int quantidade)
@@ -194,7 +212,7 @@ class Cliente
 
     public void ExibirCompras()
     {
-        Console.WriteLine($"Compras do Cliente {Nome}:");
+        Console.WriteLine($"Compras do Cliente {Nome}: \n");
         foreach (var produto in Compras)
         {
             produto.ExibirDetalhes();
