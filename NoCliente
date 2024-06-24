@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class NoCliente
+    {
+        private Cliente elemento;
+        private NoCliente proximo;
+
+        public NoCliente(Cliente elemento)
+        {
+            this.elemento = elemento;
+            this.proximo = null;
+        }
+
+        public Cliente Elemento
+        {
+            get { return elemento; }
+            set { elemento = value; }
+        }
+
+        public NoCliente Proximo
+        {
+            get { return proximo; }
+            set { proximo = value; }
+        }
+    }
+
+}
