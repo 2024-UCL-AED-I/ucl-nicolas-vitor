@@ -26,4 +26,4 @@ Siga as instruções apresentadas no menu de interação para utilizar as funcio
 
 28/05 - Debatido e criado a ideia do que seria feito por completo no sistema e inicio das atividades iniciais de programação do projeto
 17/06 - Código já finalizado com as ideias iniciais todas desenvolvidas e completas. 
-25/06 - Código revisado, melhora na visualização do usuario ao mexer no codigo; Implementação das classes NoCliente, NoProdutos, ListaProdutos, ListaClientes; Privatização dos atributos nas classes.
+25/06 - Código revisado, melhora na visualização do usuario ao mexer no codigo; Implementação das classes NoCliente, NoProdutos, ListaProdutos, ListaClientes; Privatização dos atributos nas classes; e tentado implementar o banco de dados no txt fora do bin ao maximo porém deu apenas erro, mesmo assim fica salvo porem na pasta debug o banco de dados em txt e no replit funcionando normalmente.
