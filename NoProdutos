@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class NoProdutos
+    {
+        private Produto elemento;
+        private NoProdutos proximo;
+
+        public NoProdutos(Produto elemento)
+        {
+            this.elemento = elemento;
+            this.proximo = null;
+        }
+
+        public Produto Elemento
+        {
+            get { return elemento; }
+            set { elemento = value; }
+        }
+
+        public NoProdutos Proximo
+        {
+            get { return proximo; }
+            set { proximo = value; }
+        }
+    }
+
+}
